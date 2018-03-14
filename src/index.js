@@ -7,8 +7,10 @@ import './styles/styles.css'; // Webpack can import css files too
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
+import {fetch_users} from "./actions/userActions";
 
 const store = configureStore();
+store.dispatch(fetch_users());
 
 render(
   <Provider store={store}>

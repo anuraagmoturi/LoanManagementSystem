@@ -12,6 +12,7 @@ const Navigation = () => {
           <li><IndexLink to="/" activeclassName="active">Home</IndexLink></li>
           <li><Link to="/users" activeclassName="active">Users</Link></li>
           <li><Link to="/about" activeclassName="active">About</Link></li>
+          <li><Link to="/manage" activeclassName="active">Signup</Link></li>
         </ul>
       </div>
     </nav>

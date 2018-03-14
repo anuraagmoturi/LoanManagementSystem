@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import {bindActionCreators} from 'redux';
+import UserList from './UsersList';
 
 class UsersPage extends React.Component {
 
@@ -11,12 +12,13 @@ class UsersPage extends React.Component {
     //initialize state
 
     this.state = {
-      user: {name: ""}
+      user: {username: ""}
     };
 
     //bind functions
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
+    this.getUsers = this.getUsers.bind(this);
   }
 
 //render functions
@@ -31,24 +33,22 @@ class UsersPage extends React.Component {
   }
 
   userRow(user, index){
-    return <div key={index}>{user.name}</div>;
+    return <div key={index}>{user.username}</div>;
+  }
+
+  getUsers(){
+    this.props.actions.fetch_users();
   }
 
 //render
+
+
   render() {
+    const {users} = this.props;
     return (
       <div>
-        <h1>Users</h1>
-        {this.props.users.map(this.userRow)}
-        <h2>Add User</h2>
-        <input type="text"
-               onChange={this.onTitleChange}
-               value={this.state.user.name}
-        />
-        <input type="submit"
-               value="Save"
-               onClick={this.onClickSave}
-        />
+        <h2>Users</h2>
+        <UserList users={users}/>
       </div>
     );
   }
